@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} %-5level %logger{1} - %msg%n"/>
+        </Console>
+        <RollingFile name="file" fileName="logs/rpg.log" filePattern="logs/rpg-%d{MM-dd-yyyy}.log"
+                     immediateFlush="false">
+            <PatternLayout pattern="%d{dd-MM-yyy HH:mm:ss} %-5level %logger{3} - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="file"/>
+        </Root>
+        <logger name="org.springframework" level="error" additivity="false"/>
+        <logger name="apache.http" level="error" additivity="false"/>
+    </Loggers>
+</Configuration>
