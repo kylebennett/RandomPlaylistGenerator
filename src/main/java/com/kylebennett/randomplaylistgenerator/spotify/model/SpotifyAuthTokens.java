@@ -7,54 +7,60 @@ import com.fasterxml.jackson.annotation.JsonSetter;
  */
 public class SpotifyAuthTokens {
 
-    private String accessToken;
-    private String refreshToken;
-    private String tokenType;
-    private int expiresIn;
+	private String accessToken;
+	private String refreshToken;
+	private String tokenType;
+	private int expiresIn;
 
-    public String getAccessToken() {
-        return accessToken;
-    }
+	public String getAccessToken() {
+		return accessToken;
+	}
 
-    @JsonSetter("access_token")
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
+	@JsonSetter("access_token")
+	public void setAccessToken(final String accessToken) {
+		this.accessToken = accessToken;
+	}
 
-    public String getRefreshToken() {
-        return refreshToken;
-    }
+	public String getRefreshToken() {
+		return refreshToken;
+	}
 
-    @JsonSetter("refresh_token")
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
+	@JsonSetter("refresh_token")
+	public void setRefreshToken(final String refreshToken) {
+		this.refreshToken = refreshToken;
+	}
 
-    public String getTokenType() {
-        return tokenType;
-    }
+	public String getTokenType() {
+		return tokenType;
+	}
 
-    @JsonSetter("token_type")
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
-    }
+	@JsonSetter("token_type")
+	public void setTokenType(final String tokenType) {
+		this.tokenType = tokenType;
+	}
 
-    public int getExpiresIn() {
-        return expiresIn;
-    }
+	public int getExpiresIn() {
+		return expiresIn;
+	}
 
-    @JsonSetter("expires_in")
-    public void setExpiresIn(int expiresIn) {
-        this.expiresIn = expiresIn;
-    }
+	@JsonSetter("expires_in")
+	public void setExpiresIn(final int expiresIn) {
+		this.expiresIn = expiresIn;
+	}
 
-    @Override
-    public String toString() {
-        return new org.apache.commons.lang3.builder.ToStringBuilder(this)
-                .append("accessToken", accessToken)
-                .append("refreshToken", refreshToken)
-                .append("tokenType", tokenType)
-                .append("expiresIn", expiresIn)
-                .toString();
-    }
+	@Override
+	public String toString() {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("SpotifyAuthTokens [accessToken=");
+		builder.append(accessToken);
+		builder.append(", refreshToken=");
+		builder.append(refreshToken);
+		builder.append(", tokenType=");
+		builder.append(tokenType);
+		builder.append(", expiresIn=");
+		builder.append(expiresIn);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

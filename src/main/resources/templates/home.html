@@ -14,13 +14,13 @@
     <div class="starter-template">
         <h1>Spotify Random Playlist Generator</h1>
 
-        {{#authToken}}
-        <p>AuthToken - {{authToken}} </p>
-        {{/authToken}}
-        {{^authToken}}
+        {{#currentUser-name}}
+        <p>Logged in as {{currentUser-name}}</p>
+        {{/currentUser-name}}
+        {{^currentUser-name}}
         <h2>Not Logged In</h2>
         <a href={{authUrl}}>Get Spotify Auth Token</a>
-        {{/authToken}}
+        {{/currentUser-name}}
     </div>
 
 </div>
