@@ -19,101 +19,101 @@ public class SpotifyUserProfile {
 	private String type;
 	private String uri;
 
-	public final String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
 	@JsonSetter("display_name")
-	public final void setUsername(final String username) {
+	public void setUsername(final String username) {
 		this.username = username;
 	}
 
-	public final String getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public final void setBirthdate(final String birthdate) {
+	public void setBirthdate(final String birthdate) {
 		this.birthdate = birthdate;
 	}
 
-	public final String getCountry() {
+	public String getCountry() {
 		return country;
 	}
 
-	public final void setCountry(final String country) {
+	public void setCountry(final String country) {
 		this.country = country;
 	}
 
-	public final String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public final void setEmail(final String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
-	public final Map<String, String> getExternalUrls() {
+	public Map<String, String> getExternalUrls() {
 		return externalUrls;
 	}
 
 	@JsonSetter("external_urls")
-	public final void setExternalUrls(final Map<String, String> externalUrls) {
+	public void setExternalUrls(final Map<String, String> externalUrls) {
 		this.externalUrls = externalUrls;
 	}
 
-	public final Followers getFollowers() {
+	public Followers getFollowers() {
 		return followers;
 	}
 
-	public final void setFollowers(final Followers followers) {
+	public void setFollowers(final Followers followers) {
 		this.followers = followers;
 	}
 
-	public final String getHref() {
+	public String getHref() {
 		return href;
 	}
 
-	public final void setHref(final String href) {
+	public void setHref(final String href) {
 		this.href = href;
 	}
 
-	public final String getId() {
+	public String getId() {
 		return id;
 	}
 
-	public final void setId(final String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
-	public final Images getImages() {
+	public Images getImages() {
 		return images;
 	}
 
-	public final void setImages(final Images images) {
+	public void setImages(final Images images) {
 		this.images = images;
 	}
 
-	public final String getProduct() {
+	public String getProduct() {
 		return product;
 	}
 
-	public final void setProduct(final String product) {
+	public void setProduct(final String product) {
 		this.product = product;
 	}
 
-	public final String getType() {
+	public String getType() {
 		return type;
 	}
 
-	public final void setType(final String type) {
+	public void setType(final String type) {
 		this.type = type;
 	}
 
-	public final String getUri() {
+	public String getUri() {
 		return uri;
 	}
 
-	public final void setUri(final String uri) {
+	public void setUri(final String uri) {
 		this.uri = uri;
 	}
 
@@ -153,19 +153,19 @@ public class SpotifyUserProfile {
 		private String href;
 		private int total;
 
-		public final String getHref() {
+		public String getHref() {
 			return href;
 		}
 
-		public final void setHref(final String href) {
+		public void setHref(final String href) {
 			this.href = href;
 		}
 
-		public final int getTotal() {
+		public int getTotal() {
 			return total;
 		}
 
-		public final void setTotal(final int total) {
+		public void setTotal(final int total) {
 			this.total = total;
 		}
 
@@ -186,22 +186,22 @@ public class SpotifyUserProfile {
 		private int height;
 		private int width;
 		private String url;
-		public final int getHeight() {
+		public int getHeight() {
 			return height;
 		}
-		public final void setHeight(final int height) {
+		public void setHeight(final int height) {
 			this.height = height;
 		}
-		public final int getWidth() {
+		public int getWidth() {
 			return width;
 		}
-		public final void setWidth(final int width) {
+		public void setWidth(final int width) {
 			this.width = width;
 		}
-		public final String getUrl() {
+		public String getUrl() {
 			return url;
 		}
-		public final void setUrl(final String url) {
+		public void setUrl(final String url) {
 			this.url = url;
 		}
 		@Override

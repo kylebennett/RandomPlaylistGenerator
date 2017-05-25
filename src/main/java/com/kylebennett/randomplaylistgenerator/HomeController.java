@@ -28,7 +28,7 @@ public class HomeController {
 	private UserHandler userHandler;
 
 	@RequestMapping("/")
-	public String homePage(final Map<String, Object> model) {
+	public String displayHomePage(final Map<String, Object> model) {
 
 		final String authUrl = authHandler.buildSpotifyAuthUrl();
 		model.putIfAbsent("authUrl", authUrl);
