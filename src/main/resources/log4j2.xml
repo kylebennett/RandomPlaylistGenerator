@@ -19,7 +19,7 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="file"/>
         </Root>
-        <logger name="org.springframework" level="error" additivity="false"/>
-        <logger name="apache.http" level="error" additivity="false"/>
+        <!--<logger name="org.springframework" level="error" additivity="false"/>
+        <logger name="apache.http" level="error" additivity="false"/>-->
     </Loggers>
 </Configuration>

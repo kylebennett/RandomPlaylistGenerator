@@ -23,14 +23,12 @@ public class AuthController {
 
 	@RequestMapping("/authorisationCode")
 	public String getAuthToken(
-			@RequestParam(name = "code") final String authToken,
+			@RequestParam(name = "code") final String authCode,
 			final Map<String, Object> model) {
 
-		LOG.debug("Auth Token from Spotify [{}]", authToken);
+		LOG.debug("Auth Token from Spotify [{}]", authCode);
 
-		authHandler.setAuthorisationCode(authToken);
-
-		authHandler.getTokens();
+		authHandler.getTokens(authCode);
 
 		return "redirect:/";
 	}

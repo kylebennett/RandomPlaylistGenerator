@@ -38,7 +38,7 @@ public class HomeController {
 		final SpotifyUserProfile currentUser = userHandler.getCurrentUser();
 
 		if (currentUser != null) {
-			model.putIfAbsent("currentUser-name", currentUser.getUsername());
+			model.putIfAbsent("currentUser", currentUser.getId());
 		}
 		return "home";
 	}

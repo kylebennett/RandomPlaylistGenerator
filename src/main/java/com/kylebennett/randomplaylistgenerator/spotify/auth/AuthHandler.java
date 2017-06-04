@@ -12,10 +12,10 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -46,11 +46,18 @@ public class AuthHandler {
 	@Value("${spotify.auth.redirectUri}")
 	private String spotifyRedirectUri;
 
-	private String authorisationCode = null;
+	@Autowired
+	private CloseableHttpClient httpClient;
+
+	@Autowired
+	private AuthResponseHandler responseHandler;
 
 	private SpotifyAuthTokens authTokens = null;
 
 	private LocalDateTime lastRefreshTime = null;
+
+	public AuthHandler() {
+	}
 
 	public String getAccessToken() {
 
@@ -94,15 +101,9 @@ public class AuthHandler {
 		return authUrl;
 	}
 
-	public void setAuthorisationCode(final String authorisationCode) {
-		this.authorisationCode = authorisationCode;
-	}
-
-	public void getTokens() {
+	public void getTokens(final String authorisationCode) {
 
 		LOG.debug("Getting Access Tokens from Spotify");
-
-		final CloseableHttpClient httpclient = HttpClients.createDefault();
 
 		final HttpPost tokenRequest = new HttpPost(tokenUrl);
 
@@ -124,9 +125,9 @@ public class AuthHandler {
 		}
 
 		try {
-			final AuthResponseHandler rh = new AuthResponseHandler();
-			final SpotifyAuthTokens authResponse = httpclient.execute(
-					tokenRequest, rh);
+
+			final SpotifyAuthTokens authResponse = httpClient.execute(
+					tokenRequest, responseHandler);
 
 			LOG.debug("Spotify Auth Response [{}]", authResponse);
 
@@ -143,8 +144,6 @@ public class AuthHandler {
 		LOG.debug("Refreshing Access Tokens");
 
 		if (authTokens != null) {
-
-			final CloseableHttpClient httpclient = HttpClients.createDefault();
 
 			final HttpPost tokenRequest = new HttpPost(tokenUrl);
 
@@ -164,9 +163,9 @@ public class AuthHandler {
 			}
 
 			try {
-				final AuthResponseHandler rh = new AuthResponseHandler();
-				final SpotifyAuthTokens authResponse = httpclient.execute(
-						tokenRequest, rh);
+
+				final SpotifyAuthTokens authResponse = httpClient.execute(
+						tokenRequest, responseHandler);
 
 				LOG.debug("Spotify Refresh Response [{}]", authResponse);
 
@@ -180,7 +179,8 @@ public class AuthHandler {
 			LOG.error("Can't refresh Access Token, no Refresh Token found");
 		}
 	}
-	private String buildAuthHeader() {
+
+	protected String buildAuthHeader() {
 
 		String encodedSecret = null;
 
